@@ -128,7 +128,7 @@ func checkAlerts(hostip string, username string, password string, l *logger.Logg
 
 	// Check each alert for those of interest.
 	for i := 0; i < a.Meta.TotalCount; i++ {
-		if statusNotOkay(a.Objects[i].Level) {
+		if statusNotOkay(a.Objects[i].Level) && !a.Objects[i].Dismissed {
 			if logging {
 				l.Println(a.Objects[i].Level + " - " + a.Objects[i].Message)
 			}
